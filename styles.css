@@ -1,0 +1,734 @@
+:root {
+    --mobile-color: #02b0cc;
+    --dektop-color: #ff4554;
+    --frame-screen: #202020;
+    --screen: #cac8c8;
+    --form-screen: #eceaea;
+    --button-shapes: #373737; 
+    --shadow: #0000004d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* mobile first */
+.container {
+    width: 97%;
+    height: 98%;
+    background-color: var(--mobile-color);
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.gameboy {
+    display: none;
+}
+
+.screen {
+    margin-top: 2em;
+    width: 90%;
+    height: 100%;
+    background-color: var(--frame-screen);
+    border-radius: 2em;
+    border: .5em solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.results {
+    width: 90%;
+    height: 90%;
+    background-color: var(--screen);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+h1, h2 {
+    font-family: Pixelify Sans;
+    font-size: 3rem;
+    text-align: center;
+    padding: .5em;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#search-input {
+    margin: 1em;
+    padding: .4em;
+    border-radius: 0;
+    height: 2em;
+    text-align: center;
+}
+
+#search-button {
+    width: 50%;
+    height: 2em;
+    cursor: pointer;
+    background-color: var(--dektop-color);
+    border: .2em solid black;
+    color: black;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: .2em;
+    margin-top: 1em;
+}
+
+.game-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.left, .right {
+    width: 49%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus {
+    position: relative;
+    top: -.8em;
+}
+
+.line {
+    position: absolute;
+    height: 8em;
+    width: 2.4em;
+    background-color: var(--frame-screen);
+    border-radius: .5em;
+    top: -3em;
+    box-shadow: inset 7px 9px 21px 0px var(--shadow);
+}
+
+.line-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.arrow {
+    z-index: 2;
+    border-left: .6em solid transparent;
+    border-right: .6em solid transparent;
+    border-bottom: 1em solid var(--button-shapes);
+}
+
+.middle {
+    background-color: var(--button-shapes);
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.d {
+    transform: rotate(180deg);
+}
+
+.down {
+    transform: rotate(180deg);
+}
+
+.left-right {
+    transform: rotate(90deg);
+}
+
+.right {
+    position: relative;
+}
+
+.circle {
+    background-color: var(--frame-screen);
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--screen);
+    box-shadow: inset 7px 9px 21px 0px var(--shadow);
+}
+
+.a {
+    position: absolute;
+    top: 3em;
+    right: 7em;
+}
+
+.letter {
+    position: absolute;
+    z-index: 2;
+    font-size: 2rem;
+}
+
+.b {
+    position: absolute;
+    bottom: 2em;
+    left: 2em;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+}
+
+.hidden {
+    height: 1px;
+    display: none;
+}
+
+.form-container {
+    position: absolute;
+    background-color: var(--form-screen);
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: .4em solid var(--frame-screen);
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: .6em;
+}
+
+.form-container h2 {
+    font-size: 1.3rem;
+}
+
+.form-container #search-button {
+    width: 5em;
+    font-size: 1.2em;
+    margin-top: 0;
+}
+
+.form-container #search-input {
+    width: 9em;
+}
+
+.pokemon-results {
+    display: grid;
+    grid-template-areas: 
+    "img img"
+    "name name"
+    "type type"
+    "left-stats right-stats";
+    width: 100%;
+    gap: 2em;
+    justify-items: center;
+    align-items: center;
+    padding: .5em;
+}
+
+#pokemon-image {
+    grid-area: img;
+    width: 14em;
+    transform: scaleX(-1);
+    border: 0.5em solid var(--button-shapes);
+    background-color: var(--form-screen);
+    padding: 1em;
+    margin-top: 6em;
+}
+
+#pokemon-name {
+    grid-area: name;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-family: Pixelify Sans;
+    text-align: center;
+    width: 100%;
+}
+
+.pokemon-stats {
+    font-size: 1.4rem;
+    padding: 1em;
+}
+
+#left-stats {
+    grid-area: left-stats;
+}
+
+#right-stats {
+    grid-area: right-stats
+}
+
+.type-container {
+    grid-area: type;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.type {
+    padding: .5em;
+    margin: 0;
+    border-radius: .2em;
+    font-size: 1.4rem;
+}
+
+.stats {
+    padding: .1em;
+}
+
+/* types of pokemon */
+.normal {
+    background-color: #b7b7aa;
+  }
+  
+  .fire {
+    background-color: #ff6f52;
+  }
+  
+  .water {
+    background-color: #42a1ff;
+  }
+  
+  .electric {
+    background-color: #fecc33;
+  }
+  
+  .grass {
+    background-color: #78cc55;
+  }
+  
+  .ice {
+    background-color: #66ccfe;
+  }
+  
+  .fighting {
+    background-color: #d3887e;
+  }
+  
+  .poison {
+    background-color: #c68bb7;
+  }
+  
+  .ground {
+    background-color: #dfba52;
+  }
+  
+  .flying {
+    background-color: #8899ff;
+  }
+  
+  .psychic {
+    background-color: #ff66a3;
+  }
+  
+  .bug {
+    background-color: #aabb23;
+  }
+  
+  .rock {
+    background-color: #baaa66;
+  }
+  
+  .ghost {
+    background-color: #9995d0;
+  }
+  
+  .dragon {
+    background-color: #9e93f1;
+  }
+  
+  .dark {
+    background-color: #b59682;
+  }
+  
+  .steel {
+    background-color: #abaabb;
+  }
+  
+  .fairy {
+    background-color: #ed99ed;
+  }
+
+@media (min-width: 440px) and (max-width: 599px){
+    .container {
+        width: 90%;
+        height: 96%;
+    }
+
+    .b {
+        left: 5em;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 780px){
+    .container {
+        width: 80%;
+    }
+
+    .b {
+        left: 8em;
+    }
+}
+
+@media (min-width: 781px) and (max-width: 899px){
+    .container {
+        width: 70%;
+    }
+
+    .b {
+        left: 9em;
+    }
+}
+
+/* desktop view */
+
+@media (min-width: 900px){
+
+.container {
+    position: relative;
+    background: var(--mobile-color);
+    background: linear-gradient(90deg, var(--mobile-color) 0%, var(--mobile-color) 10%, var(--button-shapes), var(--dektop-color) 90%, var(--dektop-color) 100%);
+    width: 92%;
+    height: 70%;
+    border-radius: 8em;
+}
+
+.screen {
+    margin-top: 0em;
+    width: 80%;
+    border-radius: 0em;
+    border: 0;
+    border-left: .5em solid black;
+    border-right: .5em solid black;
+}
+
+.results {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 5rem;
+    padding-top: 1.5em;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#search-input {
+    margin: 1em;
+    padding: .4em;
+    border-radius: 0;
+    height: 2.2em;
+    width: 18em;
+    text-align: center;
+}
+
+#search-button {
+    width: 50%;
+    height: 2em;
+    cursor: pointer;
+    background-color: var(--dektop-color);
+    border: .2em solid black;
+    color: black;
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: .2em;
+}
+
+.game-btns {
+    display: none;
+}
+
+.gameboy {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    height: 100%;
+}
+
+.blue {
+    left: 0;
+}
+
+.red {
+    right: 0;
+}
+
+.minus {
+    position: absolute;
+    top: 3em;
+    right: 2em;
+    width: 2.2em;
+    height: .5em;
+    background-color: var(--frame-screen);
+}
+
+.controller-circle {
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    background: var(--button-shapes);
+    top: 12em;
+    left: 1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-circle {
+    top: 26em;
+}
+
+.mini {
+    height: 2.2em;
+    width: .5em;
+    background-color: var(--frame-screen);
+    border-radius: 0em;
+    top: 3em;
+    left: 2em;
+}
+
+.four-buttons {
+    position: relative;
+    left: 1.6em;
+}
+
+.blue-4 {
+    top: 12em;
+}
+
+.mini-circle {
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    box-shadow: inset 7px 9px 21px 0px var(--shadow);
+    background: var(--frame-screen);
+    background: linear-gradient(163deg, var(--frame-screen) 43%, var(--button-shapes) 100%);
+}
+
+.big {
+    background: var(--frame-screen);
+    background: linear-gradient(163deg, var(--frame-screen) 43%, var(--button-shapes) 100%);
+}
+
+.max {
+    background: var(--frame-screen);
+    background: linear-gradient(163deg, var(--frame-screen) 43%, var(--button-shapes) 100%);
+    top: 26em;
+    left: 4em;
+    height: 6em;
+    width: 2em;
+}
+
+.max-2 {
+    background-color: var(--frame-screen);
+    top: 25.6em;
+    left: 3.8em;
+    height: 6em;
+    width: 2em;
+    z-index: 4;
+}
+
+.line-content {
+    padding-top: .6em;
+    padding-bottom: .6em;
+}
+
+.btn-arrows {
+    position: absolute;
+    top: 10em;
+}
+
+.c {
+    width: 2.4em;
+    height: 2.4em;
+    margin: 2em;
+    padding-top: .2em;
+}
+
+.a1, .a3 {
+    padding-left: .1em;
+}
+
+.two {
+    transform: rotate(90deg);
+}
+
+.letter {
+    font-size: 1.2rem; /* 1.5 */
+}
+
+.la, .ly {
+    transform: rotate(-90deg);
+}
+
+.arrow-two, .arrow-one {
+    z-index: 2;
+    border-left: .4em solid transparent;
+    border-right: .4em solid transparent;
+    border-bottom: .8em solid var(--button-shapes);
+}
+
+.arrow-two {
+    transform: rotate(180deg);
+}
+
+.subtitle {
+    font-size: 2.2rem;
+}
+
+.form-container {
+    grid-area: search;
+    top: 0;
+    right: 15em;
+    height: 20%;
+    padding: .6em;
+}
+
+.form-container h2 {
+    font-size: 1.8rem;
+}
+
+.form-container #search-button {
+    width: 12em;
+    margin-top: 0;
+}
+
+.form-container #search-input {
+    width: 18em;
+}
+
+.pokemon-results {
+    display: grid;
+    grid-template-areas: 
+    "search search search"
+    "img name type"
+    "img left-stats right-stats";
+    gap: 1em;
+    height: 70%;
+    width: 100%;
+    justify-content: space-evenly;
+    justify-items: flex-start;
+    align-items: center;
+}
+
+#pokemon-image {
+    width: 18em;
+    transform: scaleX(-1);
+    border: 0.5em solid var(--button-shapes);
+    background-color: var(--form-screen);
+    padding: 1em;
+}
+
+#pokemon-name {
+    font-size: 3rem;
+    width: 100%;
+    padding: 0;
+    margin-bottom: -1em;
+    text-align: center;
+}
+
+.pokemon-stats {
+    font-size: 1.4rem;
+    padding: 1em;
+}
+
+.type {
+    margin-bottom: -1em;
+    padding: .5em .8em;
+    margin: 1.8em 0 0 0;
+    border-radius: .5em;
+    font-size: 1.6rem;
+}
+
+.stats {
+    font-size: 2rem;
+}
+
+}
+
+@media screen and (min-width: 1101px) {
+    .container {
+        width: 85%;
+    }
+
+    .controller-circle {
+        left: 2.8em;
+    }
+
+    .four-buttons {
+        left: 2.5em;
+    }
+
+    .max {
+        left: 4.8em;
+        height: 7em;
+        width: 2.2em;
+    }
+    
+    .max-2 {
+        left: 4.5em;
+        height: 7em;
+        width: 2.2em;
+    }
+
+    .c {
+        width: 2.7em;
+        height: 2.7em;
+    }
+
+    .letter {
+        font-size: 1.5rem;
+    }
+
+}
